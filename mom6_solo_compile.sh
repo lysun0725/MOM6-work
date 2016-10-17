@@ -30,7 +30,7 @@ if ${DO_NO_SIS2} ; then
   (cd ${root}/build/intel/ocean_only/repro/; source ../../env; make NETCDF=3 REPRO=1 MOM6 -j)
 
 else
-  # Compiling MOM6 in MOM6-SIS2 coupled mode (LATER)
+  # Compiling MOM6 in MOM6-SIS2 coupled mode
   mkdir -p ${root}/build/intel/ice_ocean_SIS2/repro/
   (cd ${root}/build/intel/ice_ocean_SIS2/repro/; rm -f path_names; \
   ${root}/src/mkmf/bin/list_paths ${root}/src/MOM6/config_src/{dynamic,coupled_driver} ${root}/src/MOM6/src/{*,*/*}/ ${root}/src/{atmos_null,coupler,land_null,ice_ocean_extras,icebergs,SIS2,FMS/coupler,FMS/include}/)
@@ -40,3 +40,7 @@ ${root}/src/mkmf/bin/mkmf -t ${template} -o '-I../../shared/repro' -p MOM6 -l '-
   # compile the MOM6 sea-ice ocean coupled model with:
   (cd ${root}/build/intel/ice_ocean_SIS2/repro/; source ../../env; make NETCDF=3 REPRO=1 MOM6 -j)
 fi
+
+echo "NOTE: Natural end-of-script."
+exit 0
+
